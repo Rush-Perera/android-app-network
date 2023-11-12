@@ -1,5 +1,7 @@
 package lk.rush.network.service;
 
+import com.google.gson.JsonObject;
+
 import java.util.List;
 
 import lk.rush.network.model.AuthRequest;
@@ -14,10 +16,10 @@ import retrofit2.http.Path;
 
 public interface EShopService {
     @POST("auth/login")
-    Call<AuthResponse> auth(@Body AuthRequest authRequest);
+    Call<JsonObject> auth(@Body AuthRequest authRequest);
 
     @GET("products")
-    Call<List<Product>> getAllProducts(@Header("Authorization") String token);
+    Call<List<Product>> getAllProducts();
 
     @GET("products/{id}")
     Call<Product> getProductById(@Path("id") int id, @Header("Authorization")String token);
